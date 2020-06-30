@@ -4,7 +4,15 @@ var roleBuild = require ('role.build');
 var lazy = require('lazy');
 var random = require('random');
 var spawn = require('spawn');
+var roomers = require('roomers');
+
 module.exports.loop = function () {
+
+    _.forEach(Game.rooms, function(room) {
+        if(room && room.controller && room.controller.my) {
+            roomers.run(room);            
+        }
+    })
 
     for(var name in Game.creeps) {
         var creep = Game.creeps[name];
