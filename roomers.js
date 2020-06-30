@@ -2,7 +2,7 @@ var roleHarvest = require('role.harvest');
 var roleUpgrade = require('role.upgrade');
 var roleBuild = require ('role.build');
 var lazy = require('lazy');
-var random = require('random');
+var logging = require('logging');
 var spawn = require('spawn');
 
 var roomers = {
@@ -22,7 +22,7 @@ var roomers = {
             lazy.run(creep);
             spawn.run(room);
         }
-            random.run();
+            logging.run();
     
     }
 };

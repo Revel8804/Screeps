@@ -1,5 +1,5 @@
 var logging = {
-    run: function(Variable) {
+    run: function(creep) {
         for(var name in Memory.creeps) {
             if(!Game.creeps[name]) {
                 delete Memory.creeps[name];
@@ -11,9 +11,9 @@ var logging = {
             var upgrade = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrade');
             console.log('Upgraders: ' + upgrade.length);
             var build = _.filter(Game.creeps, (creep) => creep.memory.role == 'build');
-            console.log('Builders: ' + build.length);           
+            console.log('Builders: ' + build.length);   
+            console.log('****************************');       
         }
-        console.log('****************************');
     }
 };
 module.exports = logging;
