@@ -8,10 +8,10 @@ module.exports.loop = function () {
         var creep = Game.creeps[name];
         if(creep.memory.role == 'harvest') {
             roleHarvest.run(creep);
-            lazy.run(creep);
         }
         if(creep.memory.role == 'upgrade') {
             roleUpgrade.run(creep);
         }
+        lazy.run(creep);
     }
 }
