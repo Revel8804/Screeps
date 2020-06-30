@@ -8,8 +8,8 @@ var loggingController = {
             console.log('Upgraders: ' + room + upgrade.length);
             var build = _.filter(Game.creeps, (creep) => creep.memory.role == 'build');
             console.log('Builders: ' + room + build.length);
+            console.log('****************************');
         }
-        console.log('****************************');
     }
 };
 

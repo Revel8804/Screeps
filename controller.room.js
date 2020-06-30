@@ -14,7 +14,8 @@ var roomController = {
         }
         spawnController.run(room);
         jobController.run(room);
-        defenseTower.run(room); 
+        defenseTower.run(room);
+        loggingController.run(room);
     }
 };
 
