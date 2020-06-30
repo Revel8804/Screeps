@@ -1,21 +1,41 @@
+function getBody(segment, room) {
+    let body = [];
+    let segmentCost = _.sum(segment, s => BODYPART_COST[s]);
+    let energyAvailable = room.energyCapacityAvailable;
+    let maxSegments = Math.floor(energyAvailable / segmentCost);
+
+    _.times(maxSegments, function() {
+        _.forEach(segment, s => body.push(s));
+    });
+
+    return body;
+};
+
 var spawn = {
     run: function() {
         var harvest = _.filter(Game.creeps, (creep) => creep.memory.role == 'harvest');
         var upgrade = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrade');
-
+        var build = _.filter(Game.creeps, (creep) => creep.memory.role == 'build');
     
         if(harvest.length < 5) {
             var newName = 'harvest' + Game.time;
             console.log('Spawning new Harvester: ' + newName);
-            Game.spawns['Phred'].spawnCreep([WORK,CARRY,MOVE], newName, 
+            Game.spawns['Phred'].spawnCreep(([WORK, WORK, CARRY, CARRY, MOVE, MOVE]), newName, 
                 {memory: {role: 'harvest'}});        
         }
         if(upgrade.length < 5) {
             var newName = 'upgrade' + Game.time;
             console.log('Spawning new Upgrader: ' + newName);
-            Game.spawns['Phred'].spawnCreep([WORK,CARRY,MOVE], newName, 
-                {memory: {role: 'upgrade'}});        
+            Game.spawns['Phred'].spawnCreep(([WORK, WORK, CARRY, CARRY, MOVE, MOVE]), newName, 
+            {memory: {role: 'upgrade'}});        
         }
+        if(build.length < 5) {
+            var newName = 'build' + Game.time;
+            console.log('Spawning new Builder: ' + newName);
+            Game.spawns['Phred'].spawnCreep(([WORK, WORK, CARRY, CARRY, MOVE, MOVE]), newName, 
+            {memory: {role: 'build'}});        
+        }
+
 
         
         if(Game.spawns['Phred'].spawning) { 
