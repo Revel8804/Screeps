@@ -2,6 +2,7 @@ var memoryController = require('controller.memory');
 var spawnController = require('controller.spawn');
 var jobController = require('controller.job')
 var defenseTower = require('room.defense');
+var loggingController = require('controller.logging');
 
 var roomController = {
 
