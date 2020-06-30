@@ -1,5 +1,6 @@
 var roleHarvest = require('role.harvest');
 var roleUpgrade = require('role.upgrade');
+var roleBuild = require ('role.build');
 var lazy = require('lazy');
 var random = require('random');
 module.exports.loop = function () {
@@ -11,6 +12,9 @@ module.exports.loop = function () {
         }
         if(creep.memory.role == 'upgrade') {
             roleUpgrade.run(creep);
+        }
+        if(creep.memory.role == 'build') {
+            roleBuild.run(creep);
         }
         lazy.run(creep);
     }
