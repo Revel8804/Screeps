@@ -8,7 +8,6 @@ var spawn = require('spawn');
 var roomers = {
     /** @param {Room} room **/
     run: function(room) {
-        console.log(room);
         for(var name in Game.creeps) {
             var creep = Game.creeps[name];
             if(creep.memory.role == 'harvest') {
@@ -21,7 +20,7 @@ var roomers = {
                 roleBuild.run(creep);
             }
             lazy.run(creep);
-            spawn.run(creep);
+            spawn.run(room);
         }
             random.run();
     
