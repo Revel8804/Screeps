@@ -18,8 +18,7 @@ var roleRepair = {
             var target = Game.getObjectById(creep.memory.target)
             if(!target) {
                 delete creep.memory.target;
-            }
-        }
+            }}
 
         // If no memory set find a new target
         if(creep.memory.target == undefined) {
@@ -28,16 +27,13 @@ var roleRepair = {
                     return (structure.hits < structure.hitsMax &&
                             structure.structureType !== STRUCTURE_RAMPART &&
                             structure.structureType !== STRUCTURE_WALL)
-                }
-
-            }); 
+                }}); 
             
             if(sources.length) {
                 creep.memory.target = sources[0].id;    
             } else {
                 creep.dropOffEnergy();
-            }
-        }
+            }}
         
         // Do Work
         if (creep.memory.working) {        
@@ -45,14 +41,13 @@ var roleRepair = {
                 creep.repair(target);
                 if(creep.memory.target !== undefined && target.hits == target.hitsMax) {
                     creep.memory.target = undefined
-                }
-            } else {
+                    if(creep.memory.target == undefined) {
+                        if(Game.flags.Lazy) {
+                            creep.moveTo(Game.flags.Lazy);
+                        }}}} else {
                 creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-            } 
-        } else {
-            creep.collectEnergy();   
-        }
-    }
-};
+            }} else {
+            creep.collectEnergy();            
+        }}};
 
 module.exports = roleRepair;
