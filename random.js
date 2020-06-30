@@ -11,9 +11,9 @@ var random = {
             var upgrade = _.filter(Game.creeps, (creep) => creep.memory.role == 'upgrade');
             console.log('Upgraders: ' + upgrade.length);
             var build = _.filter(Game.creeps, (creep) => creep.memory.role == 'build');
-            console.log('Builders: ' + build.length);           
+            console.log('Builders: ' + build.length); 
+            console.log('****************************');          
         }
-        console.log('****************************');
     }
 };
 module.exports = random;
