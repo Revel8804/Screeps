@@ -1,7 +1,7 @@
 var roleHarvest = require('role.harvest');
 var roleUpgrade = require('role.upgrade');
 var lazy = require('lazy');
-
+var random = require('random');
 module.exports.loop = function () {
 
     for(var name in Game.creeps) {
@@ -14,4 +14,6 @@ module.exports.loop = function () {
         }
         lazy.run(creep);
     }
+    random.run();
 }
+// Game.spawns['Phred'].spawnCreep( [WORK, WORK, CARRY, MOVE], 'name', { memory: { role: '' } } );
