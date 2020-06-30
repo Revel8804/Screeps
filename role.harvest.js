@@ -2,6 +2,24 @@ var roleHarvest = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
+        var energyAvailable = 0;
+        energyAvailable += Game.spawns.Phred.energy;
+        _.filter(Game.structures, function(structure){
+            if (structure.structureType == STRUCTURE_EXTENSION){
+                energyAvailable += structure.energy;
+                }
+            })
+            if(energyAvailable === Game.rooms.W1N1.energyCapacityAvailable ) {
+                for(var name in Game.creeps) {
+                    var creep = Game.creeps[name];
+                    if(creep.memory.role == 'harvest') {
+                        if(Game.flags.Lazy) {
+                            creep.moveTo(Game.flags.Lazy);
+                        }
+                    }
+                }
+            }
+        
 
         // check state and update
         if(creep.memory.working && creep.store[RESOURCE_ENERGY] == 0){
