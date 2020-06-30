@@ -52,6 +52,11 @@ var roleRepair = {
         } else {
             creep.collectEnergy();   
         }
+        if(creep.memory.target == undefined){
+            if(Game.flags.Lazy) {
+                creep.moveTo(Game.flags.Lazy);
+            }
+        }
     }
 };
 
