@@ -16,4 +16,4 @@ var roleHarvest = {
 	}
 };
 
-module.exports = roleHarvester;
+module.exports = roleHarvest;
