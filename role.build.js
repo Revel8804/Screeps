@@ -1,32 +1,49 @@
 var roleBuild = {
 
-    /** @param {Creep} creep **/
+    /** @param {Creep} creep  **/
     run: function(creep) {
 
-	    if(creep.memory.building && creep.store[RESOURCE_ENERGY] == 0) {
-            creep.memory.building = false;
-            creep.say('🔄 harvest');
-	    }
-	    if(!creep.memory.building && creep.store.getFreeCapacity() == 0) {
-	        creep.memory.building = true;
-	        creep.say('🚧 build');
-	    }
+        // Set And Check current working state
+        if(creep.memory.working && creep.store[RESOURCE_ENERGY] == 0) {
+            creep.memory.working = false;
+        }
+        if(!creep.memory.working && creep.store.getFreeCapacity() == 0) {
+            creep.memory.working = true;
+        }
 
-	    if(creep.memory.building) {
-	        var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
+        // If we have a target set make sure it is still a valid target
+        if(creep.memory.target) {
+            var target = Game.getObjectById(creep.memory.target)
+            if(!target) {
+                delete creep.memory.target;
+            }
+        }
+
+        // if there is no target set lets find a construction site to build
+        if(!creep.memory.target) {
+            var targets = creep.room.find(FIND_CONSTRUCTION_SITES);
             if(targets.length) {
-                if(creep.build(targets[0]) == ERR_NOT_IN_RANGE) {
-                    creep.moveTo(targets[0], {visualizePathStyle: {stroke: '#ffffff'}});
-                }
+                target = creep.pos.findClosestByRange(targets);
+                creep.memory.target = target.id;
+            } else {
+                creep.dropOffEnergy();
             }
-	    }
-	    else {
-	        var sources = creep.room.find(FIND_SOURCES);
-            if(creep.harvest(sources[0]) == ERR_NOT_IN_RANGE) {
-                creep.moveTo(sources[0], {visualizePathStyle: {stroke: '#ffaa00'}});
+        }
+
+        // Let so some work
+        if(creep.memory.working) {
+            if(creep.pos.isNearTo(target)) {
+                creep.build(target);
+            } else {
+                creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
             }
-	    }
-	}
+        }
+        else {
+            if(creep.memory.target) {
+                creep.collectEnergy();  
+            }
+        }
+    }
 };
 
 module.exports = roleBuild;

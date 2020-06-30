@@ -1,8 +1,20 @@
-var roomers = require('roomers');
+var creepFunctions = require('creep.functions');
+var roomPositionFunctions = require('roomPosition.functions');
+var roomController = require('controller.room');
 
-module.exports.loop = function () {
+module.exports.loop = function() {
+
+
+
+    // check and run each owned room
     _.forEach(Game.rooms, function(room) {
         if(room && room.controller && room.controller.my) {
-            roomers.run(room);            
-            }})}
-// Game.spawns['Phred'].spawnCreep( [WORK, WORK, CARRY, MOVE], 'name', { memory: { role: '' } } );
+            roomController.run(room);    
+                   
+        }
+    })
+
+    
+
+    
+}
