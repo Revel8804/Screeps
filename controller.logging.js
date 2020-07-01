@@ -12,7 +12,7 @@ var loggingController = {
             console.log('Miners: ' + room + ' ' + mine.length);
             var repair = _.filter(Game.creeps, (creep) => creep.memory.role == 'repair');
             console.log('Repairers: ' + room + ' ' + repair.length); 
-            console.log('Energy Capacity' + room + room.energyCapacityAvailable);           
+            console.log('Energy Capacity ' + room + ' ' + room.energyCapacityAvailable);           
             console.log('****************************');
         }
     }
