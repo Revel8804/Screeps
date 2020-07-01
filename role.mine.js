@@ -47,7 +47,12 @@ var roleMine = {
         }
         else {
                 creep.harvestEnergy();
-        }    
+        }
+        if(!target) {
+            if(Game.flags.Lazy) {
+                creep.moveTo(Game.flags.Lazy);
+            }
+        }
     }
 };
 
