@@ -40,8 +40,8 @@ var roleBuild = {
         }
         else {
             if(creep.memory.target) {
-                // creep.collectEnergy();
-                creep.harvestEnergy();
+                creep.collectEnergy();
+                // creep.harvestEnergy();
             }
         }
     }
