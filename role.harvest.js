@@ -9,17 +9,12 @@ var roleHarvest = {
                 energyAvailable += structure.energy;
                 }
             })
+            // console.log('Room' + Game.rooms.W1N1.energyCapacityAvailable);
             if(energyAvailable === Game.rooms.W1N1.energyCapacityAvailable ) {
-                for(var name in Game.creeps) {
-                    var creep = Game.creeps[name];
-                    if(creep.memory.role == 'harvest') {
-                        if(Game.flags.Lazy) {
-                            creep.moveTo(Game.flags.Lazy);
-                        }
-                    }
+                if(Game.flags.Lazy) {
+                    creep.moveTo(Game.flags.Lazy);
                 }
             }
-        
 
         // check state and update
         if(creep.memory.working && creep.store[RESOURCE_ENERGY] == 0){
@@ -69,7 +64,7 @@ var roleHarvest = {
         }
         else {
                 creep.harvestEnergy();
-        }    
+        }  
     }
 };
 
