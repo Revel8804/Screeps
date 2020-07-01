@@ -9,7 +9,6 @@ var roleHarvest = {
                 energyAvailable += structure.energy;
                 }
             })
-            // console.log('Room' + Game.rooms.W1N1.energyCapacityAvailable);
             if(energyAvailable === Game.rooms.W1N1.energyCapacityAvailable ) {
                 if(Game.flags.Lazy) {
                     creep.moveTo(Game.flags.Lazy);
