@@ -2,7 +2,7 @@ var roleMine = {
 
     /** @param {Creep} creep **/
     run: function(creep) {
-
+        // getClosestContainer(creep)
         // check state and update
         if(creep.memory.working && creep.store[RESOURCE_ENERGY] == 0){
             creep.memory.working = false;
@@ -27,7 +27,8 @@ var roleMine = {
                     target = 0;
                     break;
                 case "container":
-                    target = getContainer(creep);
+                    // target = getContainer(creep);
+                    target = getClosestContainer(creep);
                     break;
                 case "storage":
                     target = getStorage(creep);
@@ -56,16 +57,30 @@ var roleMine = {
     }
 };
 
-
-// Find a vaid container
+//Find Closest Container
+function getClosestContainer(creep) {
+    var sources = creep.room.find(FIND_STRUCTURES, {
+        filter: (structure) => {
+            return structure.structureType == STRUCTURE_CONTAINER &&
+                    structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
+        }});
+    if(sources.length) {
+        var closest = creep.pos.findClosestByPath(sources);
+        creep.memory.target = closest.id;
+        return closest;
+    } else {
+        return 0;
+    }    
+};
+// Find a valid container
 function getContainer(creep) {
     var sources = creep.room.find(FIND_STRUCTURES, {
         filter: (structure) => {
             return structure.structureType == STRUCTURE_CONTAINER &&
                     structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0;
         }
-
-    }); 
+    }
+);
     if(sources.length) {
         target = sources[0];
         creep.memory.target = sources[0].id;
