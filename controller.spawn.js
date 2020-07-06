@@ -38,32 +38,32 @@ var spawnController = {
         // Check to see if we need more creeps of each job
         var name = -1;
         if (!numberOfHarvest && (!numberOfMine || !numberOfTransport)) {
-            name=Game.spawns.Phred.createCreep([WORK, CARRY, MOVE],undefined, {role: 'harvest', working:false, target: undefined});
+            name=Game.spawns.Phred.spawnCreep([WORK, CARRY, MOVE],undefined, {role: 'harvest', working:false, target: undefined});
         }
 
         if(name == -1 && numberOfHarvest < minNumberOfHarvest) {
-            name=Game.spawns.Phred.createCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'harvest', working:false, target: undefined});
+            name=Game.spawns.Phred.spawnCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'harvest', working:false, target: undefined});
         }
         else if(name == -1 && numberOfMine < minNumberOfMine) {
-            name=Game.spawns.Phred.createCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'mine', working:false, target: undefined});
+            name=Game.spawns.Phred.spawnCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'mine', working:false, target: undefined});
         }
         else if(name == -1 && numberOfTransport < minNumberOfTransport) {
-            name=Game.spawns.Phred.createCreep(getBody([CARRY, CARRY, MOVE], room),undefined, {role: 'transport', working:false, target: undefined});
+            name=Game.spawns.Phred.spawnCreep(getBody([CARRY, CARRY, MOVE], room),undefined, {role: 'transport', working:false, target: undefined});
         }
         else if(name == -1 && numberOfUpgrade < minNumberOfUpgrade) {
-            name=Game.spawns.Phred.createCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'upgrade', working:false, target: undefined});
+            name=Game.spawns.Phred.spawnCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'upgrade', working:false, target: undefined});
         }
         else if(name == -1 && numberOfBuild < minNumberOfBuild && room.find(FIND_CONSTRUCTION_SITES).length > 0) {
-            name=Game.spawns.Phred.createCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'build', working:false, target: undefined});
+            name=Game.spawns.Phred.spawnCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'build', working:false, target: undefined});
         }
         else if(name == -1 && numberOfRepair < minNumberOfRepair) {
-            name=Game.spawns.Phred.createCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'repair', working:false, target: undefined});
+            name=Game.spawns.Phred.spawnCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'repair', working:false, target: undefined});
         }
         else if(name == -1 && numberOfWall < minNumberOfWall) {
-            name=Game.spawns.Phred.createCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'wall', working:false, target: undefined});
+            name=Game.spawns.Phred.spawnCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'wall', working:false, target: undefined});
         }
         else if(name == -1 && numberOfClaim < minNumberOfClaim) {
-            name=Game.spawns.Phred.createCreep(getBody([CLAIM, MOVE], room),undefined, {role: 'claim', working:false, target: undefined});
+            name=Game.spawns.Phred.spawnCreep(getBody([CLAIM, MOVE], room),undefined, {role: 'claim', working:false, target: undefined});
         }
 
     
