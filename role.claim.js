@@ -1,20 +1,17 @@
 var roleClaim = {
     /** @param {Creep} creep **/
     run: function(creep) {
-           if (creep.memory.working) {
-
-            if(creep.pos.isNearTo(target)) {
-                creep.transfer(target, RESOURCE_ENERGY)
-            } 
-            else {
-                creep.moveTo(target, {visualizePathStyle: {stroke: '#ffffff'}});
-            }
+        room = '[room W1N2]';
+        if(creep.room.name != 'W1N2') {
+            var exitdir = creep.room.findExitTo('W1N2', ['W1N2']);
+            var exit = creep.pos.findClosestByRange(exitdir);
+            creep.moveTo(exit);
         }
-        if(!target) {
-            if(Game.flags.Lazy) {
-                creep.moveTo(Game.flags.Lazy);
-            }
-        }
+        if(creep.room.name == 'W1N2') {
+            if(creep.room.controller) {
+                if(creep.reserveController(creep.room.controller) == ERR_NOT_IN_RANGE) {
+                    creep.moveTo(creep.room.controller);
+                }}}
     }
 };
 
