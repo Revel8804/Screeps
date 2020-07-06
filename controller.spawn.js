@@ -10,6 +10,25 @@ function getBody(segment, room) {
 
     return body;
 };
+function uhoh(segment, room) {
+    var energyAvailable = 0;
+    energyAvailable += Game.spawns.Phred.energy;
+    _.filter(Game.structures, function(structure){
+        if (structure.structureType == STRUCTURE_EXTENSION){
+            energyAvailable += structure.energy;
+            }
+        });
+        console.log(energyAvailable);
+    let body = [];
+    let segmentCost = _.sum(segment, s => BODYPART_COST[s]);
+    let maxSegments = Math.floor(energyAvailable / segmentCost);
+
+    _.times(maxSegments, function() {
+        _.forEach(segment, s => body.push(s));
+    });
+
+    return body;
+};
 var spawnController = {
 
     /** @param {Room} room */
@@ -39,6 +58,12 @@ var spawnController = {
         var name = -1;
         if (!numberOfHarvest && (!numberOfMine || !numberOfTransport)) {
             name=Game.spawns.Phred.createCreep([WORK, CARRY, MOVE],undefined, {role: 'harvest', working: false, target: undefined});
+        }
+        if (numberOfMine == 0) {
+            name=Game.spawns.Phred.createCreep(uhoh([WORK, CARRY, MOVE], room),undefined, {role: 'mine', working:false, target: undefined});
+        }
+        if (numberOfTransport == 0) {
+            name=Game.spawns.Phred.createCreep(uhoh([CARRY, MOVE], room),undefined, {role: 'transport', working:false, target: undefined});
         }
 
         if(name == -1 && numberOfHarvest < minNumberOfHarvest) {
