@@ -6,6 +6,7 @@ global.ROLES = {
     build: require('role.build'),
     mine: require('role.mine'),
     wall: require('role.wall'),
+    claim: require('role.claim'),
 }
 
 var jobController = {
