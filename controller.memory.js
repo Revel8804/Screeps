@@ -38,6 +38,10 @@ var memoryController = {
         if(room.memory.census.wall == undefined) {
             room.memory.census.wall = 0;
         }
+        if(room.memory.census.claim == undefined) {
+            room.memory.census.claim = 0;
+        }
+
 
         // Config Setup
         if(room.memory.config == undefined) {
