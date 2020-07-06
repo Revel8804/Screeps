@@ -8,13 +8,12 @@ var roleHarvest = {
             if (structure.structureType == STRUCTURE_EXTENSION){
                 energyAvailable += structure.energy;
                 }
-            })
+            });
             if(energyAvailable === Game.rooms.W1N1.energyCapacityAvailable ) {
                 if(Game.flags.Lazy) {
                     creep.moveTo(Game.flags.Lazy);
                 }
             }
-
         // check state and update
         if(creep.memory.working && creep.store[RESOURCE_ENERGY] == 0){
             creep.memory.working = false;

@@ -2,11 +2,11 @@ var memoryController = {
 
     /** @param {Room} room */
     run: function(room) {
+
         // init room memory
         if(!room.memory) {
             console.log('No Memory');
         } 
-
         // Creeps Setup
         if(room.memory.census == undefined) {
             room.memory.census = {};
@@ -38,9 +38,9 @@ var memoryController = {
         if(room.memory.census.wall == undefined) {
             room.memory.census.wall = 0;
         }
-        if(room.memory.census.claim == undefined) {
-            room.memory.census.claim = 0;
-        }
+        // if(room.memory.census.claim == undefined) {
+        //     room.memory.census.claim = 1;
+        // }
 
 
         // Config Setup
