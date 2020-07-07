@@ -9,9 +9,9 @@ var roomController = {
     /** @param {Room} room **/
     // Get each room and run through each controller
     run: function(room) {
-        // if(Game.time % 100 == 0) {
-        //     memoryController.run(room);
-        // }
+        if(Game.time % 100 == 0) {
+            memoryController.run(room);
+        }
         spawnController.run(room);
         jobController.run(room);
         defenseTower.run(room);

@@ -18,7 +18,6 @@ function uhoh(segment, room) {
             energyAvailable += structure.energy;
             }
         });
-        console.log(energyAvailable);
     let body = [];
     let segmentCost = _.sum(segment, s => BODYPART_COST[s]);
     let maxSegments = Math.floor(energyAvailable / segmentCost);

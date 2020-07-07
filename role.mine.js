@@ -27,8 +27,8 @@ var roleMine = {
                     target = 0;
                     break;
                 case "container":
-                    // target = getContainer(creep);
-                    target = getClosestContainer(creep);
+                    target = getContainer(creep);
+                    // target = getClosestContainer(creep);
                     break;
                 case "storage":
                     target = getStorage(creep);
