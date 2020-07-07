@@ -67,6 +67,7 @@ function checkStorage(room) {
         filter: (structure) => {
             return (structure.structureType == STRUCTURE_STORAGE)}})
     if(storage.length) {
+        console.log(storage);
         room.memory.config.storage = 'storage'
         return;
     }
