@@ -39,6 +39,14 @@ var roleTransport = {
             if(!sources.length) {
                 var sources = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
+                        return (structure.structureType == STRUCTURE_STORAGE) &&
+                               (structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
+                    }
+                });
+            }
+            if(!sources.length) {
+                var sources = creep.room.find(FIND_STRUCTURES, {
+                    filter: (structure) => {
                         return (structure.structureType == STRUCTURE_TOWER) &&
                                (structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
                     }

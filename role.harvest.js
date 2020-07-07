@@ -1,7 +1,7 @@
 var roleHarvest = {
 
     /** @param {Creep} creep **/
-    run: function(creep) {
+    run: function(creep) {        
         var energyAvailable = 0;
         energyAvailable += Game.spawns.Phred.energy;
         _.filter(Game.structures, function(structure){

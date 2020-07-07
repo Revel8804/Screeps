@@ -87,9 +87,9 @@ var spawnController = {
         else if(name == -1 && numberOfWall < minNumberOfWall) {
             name=Game.spawns.Phred.createCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'wall', working:false, target: undefined});
         }
-        else if(name == -1 && numberOfClaim < minNumberOfClaim) {
-            name=Game.spawns.Phred.createCreep(getBody([CLAIM, MOVE], room),undefined, {role: 'claim', working:false, target: undefined});
-        }
+        // else if(name == -1 && numberOfClaim < minNumberOfClaim) {
+        //     name=Game.spawns.Phred.createCreep(getBody([CLAIM, MOVE], room),undefined, {role: 'claim', working:false, target: undefined});
+        // }
 
     
         if (!(name < 0)) {
