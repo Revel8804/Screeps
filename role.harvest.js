@@ -1,3 +1,5 @@
+const { drop } = require("lodash");
+
 var roleHarvest = {
 
     /** @param {Creep} creep **/
@@ -51,7 +53,15 @@ var roleHarvest = {
             }
         }
         else {
+            var dropenergy = creep.room.find(FIND_DROPPED_RESOURCES);
+            if(dropenergy.length){
+                creep.moveTo(dropenergy[0]);
+                creep.pickup(dropenergy[0]);
+            }
+            if(!dropenergy.length) {
                 creep.harvestEnergy();
+            }
+                
         }  
     }
 };

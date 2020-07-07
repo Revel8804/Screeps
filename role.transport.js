@@ -18,7 +18,10 @@ var roleTransport = {
             if(target.store.getFreeCapacity(RESOURCE_ENERGY) == 0) {
                 creep.memory.target = undefined;
             }
-        }        
+        }
+        if(target == undefined) {
+            creep.moveTo(Game.flags.Lazy);
+        }
 
         // If no memory target set find a new one
         if(creep.memory.target == undefined) {
@@ -36,14 +39,14 @@ var roleTransport = {
                     }
                 });
             }
-            if(!sources.length) {
-                var sources = creep.room.find(FIND_STRUCTURES, {
-                    filter: (structure) => {
-                        return (structure.structureType == STRUCTURE_STORAGE) &&
-                               (structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
-                    }
-                });
-            }
+            // if(!sources.length) {
+            //     var sources = creep.room.find(FIND_STRUCTURES, {
+            //         filter: (structure) => {
+            //             return (structure.structureType == STRUCTURE_STORAGE) &&
+            //                    (structure.store.getFreeCapacity(RESOURCE_ENERGY) > 0);
+            //         }
+            //     });
+            // }
             if(!sources.length) {
                 var sources = creep.room.find(FIND_STRUCTURES, {
                     filter: (structure) => {
