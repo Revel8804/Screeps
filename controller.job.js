@@ -7,6 +7,7 @@ global.ROLES = {
     mine: require('role.mine'),
     wall: require('role.wall'),
     claim: require('role.claim'),
+    remote: require('role.remote')
 }
 
 var jobController = {

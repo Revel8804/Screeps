@@ -41,7 +41,7 @@ var spawnController = {
         let minNumberOfBuild = _.get(room.memory, ['census', 'build'], 1);
         let minNumberOfMine = _.get(room.memory, ['census', 'mine'], 1);
         let minNumberOfWall = _.get(room.memory, ['census', 'wall'], 1);
-        // let minNumberOfClaim = _.get(room.memory, ['census', 'claim'], 1);
+        let minNumberOfClaim = _.get(room.memory, ['census', 'claim'], 1);
         
         // Check how many creeps of each role we have
         var numberOfTransport = _.sum(Game.creeps, (creep) => creep.memory.role == 'transport');
@@ -51,7 +51,7 @@ var spawnController = {
         var numberOfBuild = _.sum(Game.creeps, (creep) => creep.memory.role == 'build');
         var numberOfMine = _.sum(Game.creeps, (creep) => creep.memory.role == 'mine');
         var numberOfWall = _.sum(Game.creeps, (creep) => creep.memory.role == 'wall');
-        // var numberOfClaim = _.sum(Game.creeps, (creep) => creep.memory.role == 'claim');
+        var numberOfClaim = _.sum(Game.creeps, (creep) => creep.memory.role == 'claim');
        
         // Check to see if we need more creeps of each job
         var name = -1;
@@ -86,9 +86,9 @@ var spawnController = {
         else if(name == -1 && numberOfWall < minNumberOfWall) {
             name=Game.spawns.Phred.createCreep(getBody([WORK, CARRY, MOVE], room),undefined, {role: 'wall', working:false, target: undefined});
         }
-        // else if(name == -1 && numberOfClaim < minNumberOfClaim) {
-        //     name=Game.spawns.Phred.createCreep(getBody([CLAIM, MOVE], room),undefined, {role: 'claim', working:false, target: undefined});
-        // }
+        else if(name == -1 && numberOfClaim < minNumberOfClaim) {
+         name=Game.spawns.Phred.createCreep(getBody([CLAIM, MOVE], room),undefined, {role: 'claim', working:false, target: undefined});
+        }
 
     
         if (!(name < 0)) {
